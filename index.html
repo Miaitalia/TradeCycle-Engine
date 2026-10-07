@@ -3,281 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeCycle - الذكاء الاصطناعي للمقايل الدائرية</title>
+    <title>TradeCycle - الذكاء الاصطناعي للمقايضة الدائرية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
     <!-- Header / Navbar -->
-    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <!-- Logo -->
-            <div class="flex items-center gap-2">
-                <span class="text-2xl font-extrabold text-emerald-600">TradeCycle</span>
-                <span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded-full font-semibold">AI</span>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md shadow-indigo-200">
+                    🔄
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xl tracking-tight text-slate-900">TradeCycle <span class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-2 py-0.5 rounded-full">Berlin AI</span></h1>
+                </div>
             </div>
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex gap-8 font-medium text-slate-600 text-sm">
-                <a href="#how-it-works" class="hover:text-emerald-600 transition" data-i18n="nav_how">كيف تعمل؟</a>
-                <a href="#simulation" class="hover:text-emerald-600 transition" data-i18n="nav_sim">محاكاة الخوارزمية</a>
-                <a href="#features" class="hover:text-emerald-600 transition" data-i18n="nav_features">المميزات</a>
-            </nav>
-
-            <!-- Actions & Language Switcher -->
-            <div class="flex items-center gap-4">
-                <!-- Language Selector Dropdown -->
-                <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                        <option value="ar">🇸🇦 العربية</option>
-                        <option value="en" selected>🇬🇧 English</option>
-                        <option value="de">🇩🇪 Deutsch</option>
-                    </select>
-                </div>
-
-                <a href="#cta" class="bg-slate-900 text-white text-sm font-bold px-5 py-2.5 rounded-xl hover:bg-slate-800 transition" data-i18n="nav_login">تسجيل الدخول</a>
+            <!-- Language Switcher -->
+            <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-lg text-sm font-semibold">
+                <button onclick="setLanguage('ar')" id="lang-ar" class="px-3 py-1.5 rounded-md transition-all bg-white text-indigo-600 shadow-sm">العربية</button>
+                <button onclick="setLanguage('en')" id="lang-en" class="px-3 py-1.5 rounded-md transition-all text-slate-600 hover:text-slate-900">English</button>
+                <button onclick="setLanguage('de')" id="lang-de" class="px-3 py-1.5 rounded-md transition-all text-slate-600 hover:text-slate-900">Deutsch</button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-        
-        <!-- Text Content -->
-        <div class="space-y-6">
-            <span class="inline-block bg-emerald-50 text-emerald-700 font-bold text-xs px-3 py-1.5 rounded-full border border-emerald-200" data-i18n="hero_tag">
-                الذكاء الاصطناعي للمقايل الدائرية ⚡️
-            </span>
-            <h1 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight" data-i18n="hero_title">
-                لا تدفع نقداً.. بدّل أغراضك غير المستخدمة بأشياء تحتاجها فوراً!
-            </h1>
-            <p class="text-lg text-slate-600 leading-relaxed" data-i18n="hero_desc">
-                أول منصة ذكية تعتمد على سلاسل التبادل الدائري. يلتقط ذكاؤنا الاصطناعي رغبتك ورغبات الآخرين، ويصنع سلسلة مقايضة مغلقة تجمع حتى 5 أطراف لتأخذ ما تريد دون العناء أو الانتظار.
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-10 flex-grow w-full">
+        <!-- Hero Section -->
+        <div class="text-center mb-10">
+            <h2 id="hero-title" class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3 leading-tight">
+                منصة المقايضة الدائرية الذكية
+            </h2>
+            <p id="hero-subtitle" class="text-slate-600 text-lg max-w-2xl mx-auto">
+                ربط أطراف التبادل عبر خوارزميات الذكاء الاصطناعي لإتمام الصفقات بدون كاش.
             </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="#simulation" class="bg-emerald-600 text-white font-bold text-center px-8 py-4 rounded-xl shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition" data-i18n="hero_btn_primary">
-                    🚀 جرب التبادل الآن – مجاناً
-                </a>
-                <a href="#how-it-works" class="border border-slate-200 text-slate-700 font-bold text-center px-6 py-4 rounded-xl hover:bg-slate-50 transition" data-i18n="hero_btn_secondary">
-                    🎥 شاهد كيف تعمل الخوارزمية
-                </a>
-            </div>
         </div>
 
-        <!-- Visual Live Match Mockup -->
-        <div class="bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 relative">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h3 class="font-bold text-slate-800 flex items-center gap-2 text-sm" data-i18n="card_title">
-                    🔥 سلسلة تبادل مطابقة حية
-                </h3>
-                <span id="matchStatus" class="bg-emerald-100 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-bold" data-i18n="card_status">مكتملة (3 أطراف)</span>
-            </div>
-
-            <div id="chainContainer" class="space-y-4">
-                <!-- User 1: Max -->
-                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+        <!-- Swap Form Card -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl p-6 sm:p-8 mb-10">
+            <form id="swapForm" onsubmit="handleSwapSubmit(event)" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                        <p class="font-bold text-sm text-slate-800" data-i18n="u1_name">ماكس (أنت)</p>
-                        <p class="text-xs text-slate-500" data-i18n="u1_gives">يعطي: iPhone 13</p>
+                        <label id="label-have" class="block font-bold text-slate-700 mb-2">ما الذي تملكه وتود تبديله؟</label>
+                        <input type="text" id="haveItem" placeholder="مثال: iPhone 13 Pro" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50/50">
                     </div>
-                    <span class="text-xs font-bold bg-blue-50 text-blue-600 px-3 py-1 rounded-lg" data-i18n="u1_gets">🎮 يحصل على PS5</span>
-                </div>
-
-                <!-- User 2: Sarah -->
-                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
                     <div>
-                        <p class="font-bold text-sm text-slate-800" data-i18n="u2_name">سارة</p>
-                        <p class="text-xs text-slate-500" data-i18n="u2_gives">تعطي: PlayStation 5</p>
+                        <label id="label-want" class="block font-bold text-slate-700 mb-2">ما الذي تبحث عنه؟</label>
+                        <input type="text" id="wantItem" placeholder="مثال: Sony PlayStation 5" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50/50">
                     </div>
-                    <span class="text-xs font-bold bg-purple-50 text-purple-600 px-3 py-1 rounded-lg" data-i18n="u2_gets">💻 تحصل على MacBook</span>
                 </div>
 
-                <!-- User 3: Lina -->
-                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
-                    <div>
-                        <p class="font-bold text-sm text-slate-800" data-i18n="u3_name">لينا</p>
-                        <p class="text-xs text-slate-500" data-i18n="u3_gives">تعطي: MacBook Pro</p>
-                    </div>
-                    <span class="text-xs font-bold bg-emerald-50 text-emerald-600 px-3 py-1 rounded-lg" data-i18n="u3_gets">📱 تعطي لماكس (اكتملت)</span>
+                <!-- Legal Consent Checkbox -->
+                <div class="flex items-start gap-2 pt-2">
+                    <input type="checkbox" id="termsConsent" required class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                    <label for="termsConsent" id="label-terms" class="text-xs text-slate-600 leading-relaxed">
+                        أوافق على <button type="button" onclick="openLegalModal('terms')" class="text-indigo-600 underline hover:text-indigo-800">شروط الخدمة</button> و<button type="button" onclick="openLegalModal('privacy')" class="text-indigo-600 underline hover:text-indigo-800">سياسة الخصوصية</button> وإخلاء المسؤولية.
+                    </label>
                 </div>
-            </div>
 
-            <div class="mt-6 p-3 bg-emerald-50 rounded-xl text-center text-xs font-bold text-emerald-700" data-i18n="savings_text">
-                🎉 تم توفير $1,200 على جميع الأطراف دون دفع نقداً!
-            </div>
-        </div>
-    </section>
-
-    <!-- Simulation Form Section -->
-    <section id="simulation" class="max-w-3xl mx-auto px-6 py-12">
-        <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
-            <h2 class="text-2xl font-extrabold text-slate-900 mb-6 text-center">أضف طلب تبادل جديد للربط المباشر مع Render</h2>
-            
-            <form id="swapForm" onsubmit="submitSwapRequest(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">اسم المستخدم</label>
-                    <input type="text" id="userName" required placeholder="مثال: ماكس" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">الشيء الذي تملكه (HAVE)</label>
-                    <input type="text" id="hasItem" required placeholder="مثال: iPhone 12" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">الشيء الذي ترغبه (WANT)</label>
-                    <input type="text" id="wantsItem" required placeholder="مثال: iPad Air" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                </div>
-                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl hover:bg-emerald-700 transition">
-                    إرسال الطلب وتشغيل خوارزمية المطابقة ⚡️
+                <button type="submit" id="btn-submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-indigo-100 transition-all flex items-center justify-center gap-2">
+                    <span>البحث عن دورة تبادل بالذكاء الاصطناعي</span>
+                    <span class="text-xl">🚀</span>
                 </button>
             </form>
-            <p id="apiResponse" class="text-xs font-bold text-center mt-4 hidden"></p>
+
+            <div id="resultBox" class="hidden mt-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold text-center">
+                ✅ تم إرسال الطلب بنجاح إلى المحرك! جاري تحليل سلاسل التبادل مع Max و Lina...
+            </div>
         </div>
-    </section>
 
-    <!-- Multi-Language Translation & Render Integration Script -->
+        <!-- Live Demo Visual Loop -->
+        <div class="bg-indigo-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
+            <h3 id="demo-title" class="text-xl font-bold mb-4 text-indigo-200 text-center sm:text-right">مثال توضيحي حقيقي لسلسلة تبادل دائرية (Circular Swap Loop):</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="bg-indigo-800/60 p-4 rounded-xl border border-indigo-700/50">
+                    <div class="font-bold text-lg text-indigo-300 mb-1">Max 🇩🇪</div>
+                    <p class="text-sm text-indigo-100"><span id="demo-gives">يقدم</span>: MacBook Air M1</p>
+                    <p class="text-sm text-emerald-400 font-semibold"><span id="demo-wants">يريد</span>: Sony PS5</p>
+                </div>
+                <div class="bg-indigo-800/60 p-4 rounded-xl border border-indigo-700/50">
+                    <div class="font-bold text-lg text-indigo-300 mb-1">Lina 🇸🇪</div>
+                    <p class="text-sm text-indigo-100"><span id="demo-gives2">تقدم</span>: Sony PS5</p>
+                    <p class="text-sm text-emerald-400 font-semibold"><span id="demo-wants2">تريد</span>: iPhone 13</p>
+                </div>
+                <div class="bg-indigo-800/60 p-4 rounded-xl border border-indigo-700/50">
+                    <div class="font-bold text-lg text-indigo-300 mb-1">أنت (You) 🚀</div>
+                    <p class="text-sm text-indigo-100"><span id="demo-gives3">تقدم</span>: iPhone 13</p>
+                    <p class="text-sm text-emerald-400 font-semibold"><span id="demo-wants3">تريد</span>: MacBook Air M1</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Legal Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <div>
+                © 2026 TradeCycle Berlin. All rights reserved.
+            </div>
+            <div class="flex gap-4">
+                <button onclick="openLegalModal('terms')" class="hover:underline hover:text-slate-800">Terms of Service</button>
+                <button onclick="openLegalModal('privacy')" class="hover:underline hover:text-slate-800">Privacy Policy (GDPR)</button>
+                <button onclick="openLegalModal('impressum')" class="hover:underline hover:text-slate-800">Impressum / Legal Notice</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modal (Pop-up) -->
+    <div id="legalModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[80vh] overflow-y-auto shadow-2xl relative">
+            <button onclick="closeLegalModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-700 font-bold text-xl px-2">✕</button>
+            <div id="modalContent" class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                <!-- Content inserted via JS -->
+            </div>
+            <div class="mt-6 text-left">
+                <button onclick="closeLegalModal()" class="bg-indigo-600 text-white font-semibold px-5 py-2 rounded-xl hover:bg-indigo-700">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Translations & Functionality -->
     <script>
-        const API_BASE_URL = "https://tradecycle-engine.onrender.com";
-
         const translations = {
             ar: {
-                dir: "rtl",
-                nav_how: "كيف تعمل؟",
-                nav_sim: "محاكاة الخوارزمية",
-                nav_features: "المميزات",
-                nav_login: "تسجيل الدخول",
-                hero_tag: "الذكاء الاصطناعي للمقايل الدائرية ⚡️",
-                hero_title: "لا تدفع نقداً.. بدّل أغراضك غير المستخدمة بأشياء تحتاجها فوراً!",
-                hero_desc: "أول منصة ذكية تعتمد على سلاسل التبادل الدائري. يلتقط ذكاؤنا الاصطناعي رغبتك ورغبات الآخرين، ويصنع سلسلة مقايضة مغلقة تجمع حتى 5 أطراف لتأخذ ما تريد دون العناء أو الانتظار.",
-                hero_btn_primary: "🚀 جرب التبادل الآن – مجاناً",
-                hero_btn_secondary: "🎥 شاهد كيف تعمل الخوارزمية",
-                card_title: "🔥 سلسلة تبادل مطابقة حية",
-                card_status: "مكتملة (3 أطراف)",
-                u1_name: "ماكس (أنت)",
-                u1_gives: "يعطي: iPhone 13",
-                u1_gets: "🎮 يحصل على PS5",
-                u2_name: "سارة",
-                u2_gives: "تعطي: PlayStation 5",
-                u2_gets: "💻 تحصل على MacBook",
-                u3_name: "لينا",
-                u3_gives: "تعطي: MacBook Pro",
-                u3_gets: "📱 تعطي لماكس (اكتملت)",
-                savings_text: "🎉 تم توفير $1,200 على جميع الأطراف دون دفع نقداً!"
+                heroTitle: "منصة المقايضة الدائرية الذكية",
+                heroSubtitle: "ربط أطراف التبادل عبر خوارزميات الذكاء الاصطناعي لإتمام الصفقات بدون كاش.",
+                labelHave: "ما الذي تملكه وتود تبديله؟",
+                labelWant: "ما الذي تبحث عنه؟",
+                labelTerms: 'أوافق على <button type="button" onclick="openLegalModal(\'terms\')" class="text-indigo-600 underline">شروط الخدمة</button> و<button type="button" onclick="openLegalModal(\'privacy\')" class="text-indigo-600 underline">سياسة الخصوصية</button> وإخلاء المسؤولية.',
+                btnSubmit: "البحث عن دورة تبادل بالذكاء الاصطناعي",
+                demoTitle: "مثال توضيحي حقيقي لسلسلة تبادل دائرية (Circular Swap Loop):",
+                demoGives: "يقدم",
+                demoWants: "يريد",
+                resultText: "✅ تم إرسال الطلب بنجاح إلى المحرك! جاري تحليل سلاسل التبادل مع Max و Lina..."
             },
             en: {
-                dir: "ltr",
-                nav_how: "How it works",
-                nav_sim: "Algorithm Simulation",
-                nav_features: "Features",
-                nav_login: "Sign In",
-                hero_tag: "AI Multi-Party Circular Swap ⚡️",
-                hero_title: "Don't pay cash.. Swap your unused items for things you need!",
-                hero_desc: "The first smart platform powered by circular swap loops. Our AI matches your desires with others to build closed barter chains connecting up to 5 parties with zero cash required.",
-                hero_btn_primary: "🚀 Try Swapping Free",
-                hero_btn_secondary: "🎥 Watch How it Works",
-                card_title: "🔥 Live Matched Swap Chain",
-                card_status: "Completed (3 Parties)",
-                u1_name: "Max (You)",
-                u1_gives: "Gives: iPhone 13",
-                u1_gets: "🎮 Gets PS5",
-                u2_name: "Sarah",
-                u2_gives: "Gives: PlayStation 5",
-                u2_gets: "💻 Gets MacBook",
-                u3_name: "Lina",
-                u3_gives: "Gives: MacBook Pro",
-                u3_gets: "📱 Gives to Max (Complete)",
-                savings_text: "🎉 $1,200 saved across all parties with zero cash spent!"
+                heroTitle: "Smart Circular Swap Platform",
+                heroSubtitle: "Connecting swappers via AI algorithms to close multi-party deals with zero cash.",
+                labelHave: "What do you have to offer?",
+                labelWant: "What are you looking for?",
+                labelTerms: 'I agree to the <button type="button" onclick="openLegalModal(\'terms\')" class="text-indigo-600 underline">Terms of Service</button>, <button type="button" onclick="openLegalModal(\'privacy\')" class="text-indigo-600 underline">Privacy Policy</button> & Disclaimer.',
+                btnSubmit: "Find AI Swap Loop",
+                demoTitle: "Live Multi-Party Swap Loop Example:",
+                demoGives: "Gives",
+                demoWants: "Wants",
+                resultText: "✅ Request submitted successfully! Analyzing swap loops with Max & Lina..."
             },
             de: {
-                dir: "ltr",
-                nav_how: "Wie es funktioniert",
-                nav_sim: "Algorithmus-Simulation",
-                nav_features: "Funktionen",
-                nav_login: "Anmelden",
-                hero_tag: "KI-basiertes Tauschsystem ⚡️",
-                hero_title: "Zahlen Sie kein Bargeld.. Tauschen Sie ungenutzte Dinge ein!",
-                hero_desc: "Die erste intelligente Plattform für zirkuläre Tauschketten. Unsere KI verbindet Wünsche von bis zu 5 Parteien zu einer geschlossenen Tauschkette ohne Geldeinsatz.",
-                hero_btn_primary: "🚀 Gratis ausprobieren",
-                hero_btn_secondary: "🎥 Funktionsweise ansehen",
-                card_title: "🔥 Live Tauschkette",
-                card_status: "Abgeschlossen (3 Parteien)",
-                u1_name: "Max (Du)",
-                u1_gives: "Gibt: iPhone 13",
-                u1_gets: "🎮 Bekommt PS5",
-                u2_name: "Sarah",
-                u2_gives: "Gibt: PlayStation 5",
-                u2_gets: "💻 Bekommt MacBook",
-                u3_name: "Lina",
-                u3_gives: "Gibt: MacBook Pro",
-                u3_gets: "📱 Gibt an Max (Erfüllt)",
-                savings_text: "🎉 1.200 $ gespart – komplett ohne Bargeld!"
+                heroTitle: "Smarte Plattform für Zirkulären Tausch",
+                heroSubtitle: "KI-gestützte Tauschketten für bargeldlosen Gütertausch in Berlin.",
+                labelHave: "Was bietest du an?",
+                labelWant: "Was suchst du?",
+                labelTerms: 'Ich akzeptiere die <button type="button" onclick="openLegalModal(\'terms\')" class="text-indigo-600 underline">Nutzungsbedingungen</button>, <button type="button" onclick="openLegalModal(\'privacy\')" class="text-indigo-600 underline">Datenschutzerklärung</button> & Haftungsausschluss.',
+                btnSubmit: "KI-Tauschkette Finden",
+                demoTitle: "Beispiel einer echten zirkulären Tauschkette:",
+                demoGives: "Bietet",
+                demoWants: "Sucht",
+                resultText: "✅ Anfrage erfolgreich übermittelt! Analyse der Tauschketten mit Max & Lina läuft..."
             }
         };
 
-        function changeLanguage(lang) {
-            const data = translations[lang];
-            if (!data) return;
+        let currentLang = 'ar';
 
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
-            document.documentElement.dir = data.dir;
 
-            document.querySelectorAll("[data-i18n]").forEach(element => {
-                const key = element.getAttribute("data-i18n");
-                if (data[key]) {
-                    element.textContent = data[key];
+            const t = translations[lang];
+            document.getElementById('hero-title').innerText = t.heroTitle;
+            document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+            document.getElementById('label-have').innerText = t.labelHave;
+            document.getElementById('label-want').innerText = t.labelWant;
+            document.getElementById('label-terms').innerHTML = t.labelTerms;
+            document.getElementById('btn-submit').children[0].innerText = t.btnSubmit;
+            document.getElementById('demo-title').innerText = t.demoTitle;
+            document.getElementById('resultBox').innerText = t.resultText;
+
+            ['demo-gives', 'demo-gives2', 'demo-gives3'].forEach(id => document.getElementById(id).innerText = t.demoGives);
+            ['demo-wants', 'demo-wants2', 'demo-wants3'].forEach(id => document.getElementById(id).innerText = t.demoWants);
+
+            ['ar', 'en', 'de'].forEach(l => {
+                const btn = document.getElementById(`lang-${l}`);
+                if (l === lang) {
+                    btn.className = "px-3 py-1.5 rounded-md transition-all bg-white text-indigo-600 shadow-sm";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-md transition-all text-slate-600 hover:text-slate-900";
                 }
             });
         }
 
-        // تطبيق اللغة الافتراضية
-        changeLanguage("en");
-
-        async function submitSwapRequest(event) {
-            event.preventDefault();
-            const responseElement = document.getElementById("apiResponse");
-            responseElement.classList.remove("hidden");
-            responseElement.className = "text-xs font-bold text-center mt-4 text-slate-500";
-            responseElement.innerText = "جاري الاتصال بالسيرفر السحابي (Render)... ⏳";
-
-            const payload = {
-                user: document.getElementById("userName").value,
-                has: document.getElementById("hasItem").value,
-                wants: document.getElementById("wantsItem").value
-            };
-
-            try {
-                const res = await fetch(`${API_BASE_URL}/requests`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
-                });
-
-                if (res.ok) {
-                    responseElement.className = "text-xs font-bold text-center mt-4 text-emerald-600";
-                    responseElement.innerText = "✅ تم إضافة طلبك بنجاح على السيرفر المباشر!";
-                    fetchMatches();
-                } else {
-                    throw new Error("فشل إرسال الطلب");
-                }
-            } catch (err) {
-                responseElement.className = "text-xs font-bold text-center mt-4 text-red-500";
-                responseElement.innerText = "❌ حدث خطأ في الاتصال بالـ API المباشر على Render.";
-            }
+        function handleSwapSubmit(e) {
+            e.preventDefault();
+            document.getElementById('resultBox').classList.remove('hidden');
         }
 
-        async function fetchMatches() {
-            try {
-                const res = await fetch(`${API_BASE_URL}/match`);
-                const matches = await res.json();
-                console.log("Matched cycles from Render:", matches);
-            } catch (err) {
-                console.error("Match fetch error:", err);
-            }
+        const legalTexts = {
+            terms: `
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Terms of Service & Disclaimer (Haftungsausschluss)</h3>
+                <p><strong>1. Service Nature:</strong> TradeCycle Berlin operates strictly as a technical AI matching platform to connect users interested in circular barter swaps.</p>
+                <p><strong>2. No Warranty:</strong> TradeCycle does not own, inspect, verify, or ship any items listed on the platform. Users are solely responsible for inspecting items in person and agreeing on exchange terms.</p>
+                <p><strong>3. Limitation of Liability:</strong> TradeCycle accepts no liability for disputes, damages, lost items, or fraudulent activities between swapping parties.</p>
+            `,
+            privacy: `
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Privacy Policy (Datenschutzerklärung)</h3>
+                <p><strong>1. Data Collection:</strong> We collect minimal data (e.g., your name, email, and item preferences) solely to run our AI multi-party loop matching algorithm.</p>
+                <p><strong>2. GDPR Compliance:</strong> We respect your privacy rights under EU law. Your data will never be sold or shared with third-party advertisers.</p>
+                <p><strong>3. Data Removal:</strong> You may request full deletion of your swap requests and account data at any time by contacting us.</p>
+            `,
+            impressum: `
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Impressum / Legal Notice</h3>
+                <p><strong>TradeCycle Berlin AI</strong></p>
+                <p><strong>Operator:</strong> TradeCycle Project Founder</p>
+                <p><strong>Contact Email:</strong> info.berlinco@gmail.com</p>
+                <p><strong>Location:</strong> Berlin, Germany</p>
+                <p><strong>Platform Status:</strong> Non-commercial MVP / Test Phase</p>
+            `
+        };
+
+        function openLegalModal(type) {
+            document.getElementById('modalContent').innerHTML = legalTexts[type];
+            document.getElementById('legalModal').classList.remove('hidden');
+        }
+
+        function closeLegalModal() {
+            document.getElementById('legalModal').classList.add('hidden');
         }
     </script>
 </body>
