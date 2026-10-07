@@ -35,7 +35,7 @@
                 <div class="relative inline-block text-left">
                     <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
                         <option value="ar">🇸🇦 العربية</option>
-                        <option value="en">🇬🇧 English</option>
+                        <option value="en" selected>🇬🇧 English</option>
                         <option value="de">🇩🇪 Deutsch</option>
                     </select>
                 </div>
@@ -80,16 +80,16 @@
             </div>
 
             <div id="chainContainer" class="space-y-4">
-                <!-- User 1 -->
+                <!-- User 1: Max -->
                 <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
                     <div>
-                        <p class="font-bold text-sm text-slate-800" data-i18n="u1_name">أحمد (أنت)</p>
+                        <p class="font-bold text-sm text-slate-800" data-i18n="u1_name">ماكس (أنت)</p>
                         <p class="text-xs text-slate-500" data-i18n="u1_gives">يعطي: iPhone 13</p>
                     </div>
                     <span class="text-xs font-bold bg-blue-50 text-blue-600 px-3 py-1 rounded-lg" data-i18n="u1_gets">🎮 يحصل على PS5</span>
                 </div>
 
-                <!-- User 2 -->
+                <!-- User 2: Sarah -->
                 <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
                     <div>
                         <p class="font-bold text-sm text-slate-800" data-i18n="u2_name">سارة</p>
@@ -98,13 +98,13 @@
                     <span class="text-xs font-bold bg-purple-50 text-purple-600 px-3 py-1 rounded-lg" data-i18n="u2_gets">💻 تحصل على MacBook</span>
                 </div>
 
-                <!-- User 3 -->
+                <!-- User 3: Lina -->
                 <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
                     <div>
-                        <p class="font-bold text-sm text-slate-800" data-i18n="u3_name">خالد</p>
-                        <p class="text-xs text-slate-500" data-i18n="u3_gives">يعطي: MacBook Pro</p>
+                        <p class="font-bold text-sm text-slate-800" data-i18n="u3_name">لينا</p>
+                        <p class="text-xs text-slate-500" data-i18n="u3_gives">تعطي: MacBook Pro</p>
                     </div>
-                    <span class="text-xs font-bold bg-emerald-50 text-emerald-600 px-3 py-1 rounded-lg" data-i18n="u3_gets">📱 يعطي لأحمد (اكتملت)</span>
+                    <span class="text-xs font-bold bg-emerald-50 text-emerald-600 px-3 py-1 rounded-lg" data-i18n="u3_gets">📱 تعطي لماكس (اكتملت)</span>
                 </div>
             </div>
 
@@ -122,7 +122,7 @@
             <form id="swapForm" onsubmit="submitSwapRequest(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">اسم المستخدم</label>
-                    <input type="text" id="userName" required placeholder="مثال: علي" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="text" id="userName" required placeholder="مثال: ماكس" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">الشيء الذي تملكه (HAVE)</label>
@@ -142,7 +142,6 @@
 
     <!-- Multi-Language Translation & Render Integration Script -->
     <script>
-        // رابط الـ API الحي والمباشر على Render
         const API_BASE_URL = "https://tradecycle-engine.onrender.com";
 
         const translations = {
@@ -159,15 +158,15 @@
                 hero_btn_secondary: "🎥 شاهد كيف تعمل الخوارزمية",
                 card_title: "🔥 سلسلة تبادل مطابقة حية",
                 card_status: "مكتملة (3 أطراف)",
-                u1_name: "أحمد (أنت)",
+                u1_name: "ماكس (أنت)",
                 u1_gives: "يعطي: iPhone 13",
                 u1_gets: "🎮 يحصل على PS5",
                 u2_name: "سارة",
                 u2_gives: "تعطي: PlayStation 5",
                 u2_gets: "💻 تحصل على MacBook",
-                u3_name: "خالد",
-                u3_gives: "يعطي: MacBook Pro",
-                u3_gets: "📱 يعطي لأحمد (اكتملت)",
+                u3_name: "لينا",
+                u3_gives: "تعطي: MacBook Pro",
+                u3_gets: "📱 تعطي لماكس (اكتملت)",
                 savings_text: "🎉 تم توفير $1,200 على جميع الأطراف دون دفع نقداً!"
             },
             en: {
@@ -183,15 +182,15 @@
                 hero_btn_secondary: "🎥 Watch How it Works",
                 card_title: "🔥 Live Matched Swap Chain",
                 card_status: "Completed (3 Parties)",
-                u1_name: "Ahmed (You)",
+                u1_name: "Max (You)",
                 u1_gives: "Gives: iPhone 13",
                 u1_gets: "🎮 Gets PS5",
                 u2_name: "Sarah",
                 u2_gives: "Gives: PlayStation 5",
                 u2_gets: "💻 Gets MacBook",
-                u3_name: "Khaled",
+                u3_name: "Lina",
                 u3_gives: "Gives: MacBook Pro",
-                u3_gets: "📱 Gives to Ahmed (Complete)",
+                u3_gets: "📱 Gives to Max (Complete)",
                 savings_text: "🎉 $1,200 saved across all parties with zero cash spent!"
             },
             de: {
@@ -207,15 +206,15 @@
                 hero_btn_secondary: "🎥 Funktionsweise ansehen",
                 card_title: "🔥 Live Tauschkette",
                 card_status: "Abgeschlossen (3 Parteien)",
-                u1_name: "Ahmed (Du)",
+                u1_name: "Max (Du)",
                 u1_gives: "Gibt: iPhone 13",
                 u1_gets: "🎮 Bekommt PS5",
                 u2_name: "Sarah",
                 u2_gives: "Gibt: PlayStation 5",
                 u2_gets: "💻 Bekommt MacBook",
-                u3_name: "Khaled",
+                u3_name: "Lina",
                 u3_gives: "Gibt: MacBook Pro",
-                u3_gets: "📱 Gibt an Ahmed (Erfüllt)",
+                u3_gets: "📱 Gibt an Max (Erfüllt)",
                 savings_text: "🎉 1.200 $ gespart – komplett ohne Bargeld!"
             }
         };
@@ -235,7 +234,9 @@
             });
         }
 
-        // إرسال البيانات المباشرة للـ API الخاص بـ Render
+        // تطبيق اللغة الافتراضية
+        changeLanguage("en");
+
         async function submitSwapRequest(event) {
             event.preventDefault();
             const responseElement = document.getElementById("apiResponse");
@@ -250,7 +251,6 @@
             };
 
             try {
-                // إرسال الطلب لـ Render API
                 const res = await fetch(`${API_BASE_URL}/requests`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -260,8 +260,6 @@
                 if (res.ok) {
                     responseElement.className = "text-xs font-bold text-center mt-4 text-emerald-600";
                     responseElement.innerText = "✅ تم إضافة طلبك بنجاح على السيرفر المباشر!";
-                    
-                    // طلب خوارزمية المطابقة فوراً
                     fetchMatches();
                 } else {
                     throw new Error("فشل إرسال الطلب");
@@ -272,7 +270,6 @@
             }
         }
 
-        // جلب حلقات المطابقة المباشرة من Render
         async function fetchMatches() {
             try {
                 const res = await fetch(`${API_BASE_URL}/match`);
