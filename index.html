@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeCycle - الذكاء الاصطناعي للمقايل الدائرية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-extrabold text-emerald-600">TradeCycle</span>
+                <span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded-full font-semibold">AI</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex gap-8 font-medium text-slate-600 text-sm">
+                <a href="#how-it-works" class="hover:text-emerald-600 transition" data-i18n="nav_how">كيف تعمل؟</a>
+                <a href="#simulation" class="hover:text-emerald-600 transition" data-i18n="nav_sim">محاكاة الخوارزمية</a>
+                <a href="#features" class="hover:text-emerald-600 transition" data-i18n="nav_features">المميزات</a>
+            </nav>
+
+            <!-- Actions & Language Switcher -->
+            <div class="flex items-center gap-4">
+                <!-- Language Selector Dropdown -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        <option value="ar">🇸🇦 العربية</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="de">🇩🇪 Deutsch</option>
+                    </select>
+                </div>
+
+                <a href="#cta" class="bg-slate-900 text-white text-sm font-bold px-5 py-2.5 rounded-xl hover:bg-slate-800 transition" data-i18n="nav_login">تسجيل الدخول</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+        
+        <!-- Text Content -->
+        <div class="space-y-6">
+            <span class="inline-block bg-emerald-50 text-emerald-700 font-bold text-xs px-3 py-1.5 rounded-full border border-emerald-200" data-i18n="hero_tag">
+                الذكاء الاصطناعي للمقايل الدائرية ⚡️
+            </span>
+            <h1 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight" data-i18n="hero_title">
+                لا تدفع نقداً.. بدّل أغراضك غير المستخدمة بأشياء تحتاجها فوراً!
+            </h1>
+            <p class="text-lg text-slate-600 leading-relaxed" data-i18n="hero_desc">
+                أول منصة ذكية تعتمد على سلاسل التبادل الدائري. يلتقط ذكاؤنا الاصطناعي رغبتك ورغبات الآخرين، ويصنع سلسلة مقايضة مغلقة تجمع حتى 5 أطراف لتأخذ ما تريد دون العناء أو الانتظار.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#cta" class="bg-emerald-600 text-white font-bold text-center px-8 py-4 rounded-xl shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition" data-i18n="hero_btn_primary">
+                    🚀 جرب التبادل الآن – مجاناً
+                </a>
+                <a href="#how-it-works" class="border border-slate-200 text-slate-700 font-bold text-center px-6 py-4 rounded-xl hover:bg-slate-50 transition" data-i18n="hero_btn_secondary">
+                    🎥 شاهد كيف تعمل الخوارزمية
+                </a>
+            </div>
+        </div>
+
+        <!-- Visual Live Match Mockup -->
+        <div class="bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 relative">
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <h3 class="font-bold text-slate-800 flex items-center gap-2 text-sm" data-i18n="card_title">
+                    🔥 سلسلة تبادل مطابقة حية
+                </h3>
+                <span class="bg-emerald-100 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-bold" data-i18n="card_status">مكتملة (3 أطراف)</span>
+            </div>
+
+            <div class="space-y-4">
+                <!-- User 1 -->
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-sm text-slate-800" data-i18n="u1_name">أحمد (أنت)</p>
+                        <p class="text-xs text-slate-500" data-i18n="u1_gives">يعطي: iPhone 13</p>
+                    </div>
+                    <span class="text-xs font-bold bg-blue-50 text-blue-600 px-3 py-1 rounded-lg" data-i18n="u1_gets">🎮 يحصل على PS5</span>
+                </div>
+
+                <!-- User 2 -->
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-sm text-slate-800" data-i18n="u2_name">سارة</p>
+                        <p class="text-xs text-slate-500" data-i18n="u2_gives">تعطي: PlayStation 5</p>
+                    </div>
+                    <span class="text-xs font-bold bg-purple-50 text-purple-600 px-3 py-1 rounded-lg" data-i18n="u2_gets">💻 تحصل على MacBook</span>
+                </div>
+
+                <!-- User 3 -->
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-sm text-slate-800" data-i18n="u3_name">خالد</p>
+                        <p class="text-xs text-slate-500" data-i18n="u3_gives">يعطي: MacBook Pro</p>
+                    </div>
+                    <span class="text-xs font-bold bg-emerald-50 text-emerald-600 px-3 py-1 rounded-lg" data-i18n="u3_gets">📱 يعطي لأحمد (اكتملت)</span>
+                </div>
+            </div>
+
+            <div class="mt-6 p-3 bg-emerald-50 rounded-xl text-center text-xs font-bold text-emerald-700" data-i18n="savings_text">
+                🎉 تم توفير $1,200 على جميع الأطراف دون دفع نقداً!
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Language Translation Script -->
+    <script>
+        const translations = {
+            ar: {
+                dir: "rtl",
+                nav_how: "كيف تعمل؟",
+                nav_sim: "محاكاة الخوارزمية",
+                nav_features: "المميزات",
+                nav_login: "تسجيل الدخول",
+                hero_tag: "الذكاء الاصطناعي للمقايل الدائرية ⚡️",
+                hero_title: "لا تدفع نقداً.. بدّل أغراضك غير المستخدمة بأشياء تحتاجها فوراً!",
+                hero_desc: "أول منصة ذكية تعتمد على سلاسل التبادل الدائري. يلتقط ذكاؤنا الاصطناعي رغبتك ورغبات الآخرين، ويصنع سلسلة مقايضة مغلقة تجمع حتى 5 أطراف لتأخذ ما تريد دون العناء أو الانتظار.",
+                hero_btn_primary: "🚀 جرب التبادل الآن – مجاناً",
+                hero_btn_secondary: "🎥 شاهد كيف تعمل الخوارزمية",
+                card_title: "🔥 سلسلة تبادل مطابقة حية",
+                card_status: "مكتملة (3 أطراف)",
+                u1_name: "أحمد (أنت)",
+                u1_gives: "يعطي: iPhone 13",
+                u1_gets: "🎮 يحصل على PS5",
+                u2_name: "سارة",
+                u2_gives: "تعطي: PlayStation 5",
+                u2_gets: "💻 تحصل على MacBook",
+                u3_name: "خالد",
+                u3_gives: "يعطي: MacBook Pro",
+                u3_gets: "📱 يعطي لأحمد (اكتملت)",
+                savings_text: "🎉 تم توفير $1,200 على جميع الأطراف دون دفع نقداً!"
+            },
+            en: {
+                dir: "ltr",
+                nav_how: "How it works",
+                nav_sim: "Algorithm Simulation",
+                nav_features: "Features",
+                nav_login: "Sign In",
+                hero_tag: "AI Multi-Party Circular Swap ⚡️",
+                hero_title: "Don't pay cash.. Swap your unused items for things you need!",
+                hero_desc: "The first smart platform powered by circular swap loops. Our AI matches your desires with others to build closed barter chains connecting up to 5 parties with zero cash required.",
+                hero_btn_primary: "🚀 Try Swapping Free",
+                hero_btn_secondary: "🎥 Watch How it Works",
+                card_title: "🔥 Live Matched Swap Chain",
+                card_status: "Completed (3 Parties)",
+                u1_name: "Ahmed (You)",
+                u1_gives: "Gives: iPhone 13",
+                u1_gets: "🎮 Gets PS5",
+                u2_name: "Sarah",
+                u2_gives: "Gives: PlayStation 5",
+                u2_gets: "💻 Gets MacBook",
+                u3_name: "Khaled",
+                u3_gives: "Gives: MacBook Pro",
+                u3_gets: "📱 Gives to Ahmed (Complete)",
+                savings_text: "🎉 $1,200 saved across all parties with zero cash spent!"
+            },
+            de: {
+                dir: "ltr",
+                nav_how: "Wie es funktioniert",
+                nav_sim: "Algorithmus-Simulation",
+                nav_features: "Funktionen",
+                nav_login: "Anmelden",
+                hero_tag: "KI-basiertes Tauschsystem ⚡️",
+                hero_title: "Zahlen Sie kein Bargeld.. Tauschen Sie ungenutzte Dinge ein!",
+                hero_desc: "Die erste intelligente Plattform für zirkuläre Tauschketten. Unsere KI verbindet Wünsche von bis zu 5 Parteien zu einer geschlossenen Tauschkette ohne Geldeinsatz.",
+                hero_btn_primary: "🚀 Gratis ausprobieren",
+                hero_btn_secondary: "🎥 Funktionsweise ansehen",
+                card_title: "🔥 Live Tauschkette",
+                card_status: "Abgeschlossen (3 Parteien)",
+                u1_name: "Ahmed (Du)",
+                u1_gives: "Gibt: iPhone 13",
+                u1_gets: "🎮 Bekommt PS5",
+                u2_name: "Sarah",
+                u2_gives: "Gibt: PlayStation 5",
+                u2_gets: "💻 Bekommt MacBook",
+                u3_name: "Khaled",
+                u3_gives: "Gibt: MacBook Pro",
+                u3_gets: "📱 Gibt an Ahmed (Erfüllt)",
+                savings_text: "🎉 1.200 $ gespart – komplett ohne Bargeld!"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const data = translations[lang];
+            if (!data) return;
+
+            document.documentElement.lang = lang;
+            document.documentElement.dir = data.dir;
+
+            document.querySelectorAll("[data-i18n]").forEach(element => {
+                const key = element.getAttribute("data-i18n");
+                if (data[key]) {
+                    element.textContent = data[key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
